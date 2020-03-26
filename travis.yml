@@ -1,0 +1,29 @@
+language: node_js
+
+node_js:
+  - "10"
+
+git:
+  depth: 1
+
+cache:
+  directories:
+    - $HOME/.cache/yarn
+    - $HOME/fixtures
+
+sudo: false
+
+services:
+  - docker
+
+before_install:
+  - docker build -t nandiheath/tvhk-peertube --build-arg NPM_RUN_BUILD_OPTS=$NPM_RUN_BUILD_OPTS .
+
+# skip test
+script: 'true'
+  
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: tvhk-dev

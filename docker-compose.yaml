@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  postgres:
+    image: postgres:10-alpine
+    environment:
+      - POSTGRES_PASSWORD=asdf1234
+    restart: "always"
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./init-user-db.sh:/docker-entrypoint-initdb.d/init.sh
+    ports:
+      - "5432:5432"
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+
