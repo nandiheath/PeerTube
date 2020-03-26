@@ -22,7 +22,7 @@ WORKDIR /app
 USER peertube
 
 RUN yarn install --pure-lockfile \
-    && npm run build -- --light \
+    && npm run build \
     && rm -r ./node_modules ./client/node_modules \
     && yarn install --pure-lockfile --production \
     && yarn cache clean

@@ -28,7 +28,7 @@ rm -rf ./dist ./compiled
 
 pre_build_hook
 
-defaultLanguage="zh-Hant-TW"
+defaultLanguage="en-US"
 npm run ng build -- --output-path "dist/$defaultLanguage/" --deploy-url "/client/$defaultLanguage/" --prod --stats-json
 mv "./dist/$defaultLanguage/assets" "./dist"
 mv "./dist/$defaultLanguage/manifest.webmanifest" "./dist/manifest.webmanifest"
@@ -42,8 +42,7 @@ if [ -z ${1+x} ] || [ "$1" != "--light" ]; then
     else
         # Supported languages
         languages=(
-            "fi-FI" "nl-NL" "gd" "el-GR" "es-ES" "oc" "pt-BR" "pt-PT" "sv-SE" "pl-PL" "ru-RU" "zh-Hans-CN" "zh-Hant-TW"
-            "fr-FR" "ja-JP" "eu-ES" "ca-ES" "cs-CZ" "eo" "de-DE" "it-IT"
+            "zh-Hant-TW"
         )
     fi
 
