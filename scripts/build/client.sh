@@ -28,7 +28,7 @@ rm -rf ./dist ./compiled
 
 pre_build_hook
 
-defaultLanguage="en-US"
+defaultLanguage="zh-Hant-TW"
 npm run ng build -- --output-path "dist/$defaultLanguage/" --deploy-url "/client/$defaultLanguage/" --prod --stats-json
 mv "./dist/$defaultLanguage/assets" "./dist"
 mv "./dist/$defaultLanguage/manifest.webmanifest" "./dist/manifest.webmanifest"
