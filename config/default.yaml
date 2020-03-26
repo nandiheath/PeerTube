@@ -277,7 +277,7 @@ instance:
   # Uncomment or add the languages you want
   # List of supported languages: https://peertube.cpy.re/api/v1/videos/languages
   languages:
-#    - en
+    - zh
 #    - es
 #    - fr
 
