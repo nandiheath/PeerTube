@@ -1,4 +1,10 @@
+# https://medium.com/@quentin.mcgaw/cross-architecture-docker-builds-with-travis-ci-arm-s390x-etc-8f754e20aaef
 language: node_js
+
+arch:
+  - amd64
+  - arm64
+  - armv7
 
 node_js:
   - "10"
@@ -13,11 +19,16 @@ cache:
 
 sudo: false
 
-services:
-  - docker
 
 before_install:
-  - docker build -t nandiheath/tvhk-peertube --build-arg NPM_RUN_BUILD_OPTS=$NPM_RUN_BUILD_OPTS .
+  - curl -fsSL https://get.docker.com | sh
+  - echo '{"experimental":"enabled"}' | sudo tee /etc/docker/daemon.json
+  - mkdir -p $HOME/.docker
+  - echo '{"experimental":"enabled"}' | sudo tee $HOME/.docker/config.json
+  - sudo service docker start
+
+install:
+  - docker buildx build -t --platform linux/arm/v7 nandiheath/tvhk-peertube --build-arg NPM_RUN_BUILD_OPTS=$NPM_RUN_BUILD_OPTS .
 
 # skip test
 script: 'true'
