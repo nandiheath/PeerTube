@@ -1,20 +1,9 @@
-language: node_js
-
-node_js:
-  - "10"
+dist: xenial
+sudo: required
 
 git:
   depth: 1
 
-cache:
-  directories:
-    - $HOME/.cache/yarn
-    - $HOME/fixtures
-
-sudo: false
-
-services:
-  - docker
 
 before_install:
   - curl -fsSL https://get.docker.com | sh
