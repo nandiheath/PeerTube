@@ -33,12 +33,3 @@ install:
   - docker buildx create --name xbuilder --use
   
 script: bash ci.sh
-
-# skip test
-script: 'true'
-  
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: tvhk-dev
