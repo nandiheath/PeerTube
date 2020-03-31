@@ -21,6 +21,10 @@ WORKDIR /app
 
 USER peertube
 
+# avoid timeout
+# https://github.com/date-fns/date-fns/issues/1004
+RUN yarn config set network-timeout 300000
+
 RUN yarn install --pure-lockfile \
     && npm run build \
     && rm -r ./node_modules ./client/node_modules \

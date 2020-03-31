@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# check Dockerfile supported architecture https://hub.docker.com/_/node/?tab=tags&page=1&name=latest
+# https://medium.com/@quentin.mcgaw/cross-architecture-docker-builds-with-travis-ci-arm-s390x-etc-8f754e20aaef
 if [ "$TRAVIS_PULL_REQUEST" = "true" ] || [ "$TRAVIS_BRANCH" != "tvhk-dev" ]; then
   docker buildx build \
     --progress plain \
