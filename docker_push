@@ -1,4 +1,0 @@
-#!/bin/bash
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker tag nandiheath/tvhk-peertube nandiheath/tvhk-peertube-armv7:$TRAVIS_COMMIT
-docker push nandiheath/tvhk-peertube-armv7:$TRAVIS_COMMIT
