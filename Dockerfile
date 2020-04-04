@@ -1,4 +1,4 @@
-FROM node:10-buster-slim
+FROM node:12-buster-slim
 
 # Allow to pass extra options to the npm run build
 # eg: --light --light-fr to not build all client languages
@@ -25,7 +25,8 @@ USER peertube
 # https://github.com/date-fns/date-fns/issues/1004
 RUN yarn config set network-timeout 300000
 
-RUN yarn install --pure-lockfile \
+# add more logs to avoid no logs output when doing build
+RUN yarn install --pure-lockfile --verbose \
     && npm run build \
     && rm -r ./node_modules ./client/node_modules \
     && yarn install --pure-lockfile --production \
